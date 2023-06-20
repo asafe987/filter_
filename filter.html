@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Filtrar idades</h1>
+
+<div>
+  <label for="ageInput">Digite sua idade:</label>
+  <input type="number" id="ageInput" required>
+  <button onclick="myFunction()">Procurar</button>
+</div>
+
+<p id="demo"></p>
+
+<script>
+  function myFunction() {
+    const ages = [30, 18, 11, 45, 13, 76, 21, 29];
+    const ageInput = document.getElementById("ageInput");
+    const filterValue = parseInt(ageInput.value);
+
+    if (!Number.isInteger(filterValue)) {
+      alert("Insira um número inteiro válido.");
+      ageInput.focus();
+      return;
+    }
+
+    const filteredAges = ages.filter(age => age > filterValue);
+
+    const demoElement = document.getElementById("demo");
+    if (filteredAges.length === 0) {
+      demoElement.textContent = "Nenhuma idade maior que a sua foi encontrada.";
+    } else {
+      demoElement.textContent = "As idades encontradas no banco de dados maiores que a sua são: " + filteredAges.join(", ");
+    }
+  }
+</script>
+
+</body>
+</html>
+
+
